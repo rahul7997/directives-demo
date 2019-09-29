@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12" style="float: left;">
+      <app-game-control (startGame)="onGameStart($event)"></app-game-control>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12" *ngFor="let event of eventValues">
+      <span *ngIf="event%2 == 0; else oddTemplate">
+        <app-even [eventNumber]="event"></app-even>
+      </span>
+      <ng-template #oddTemplate>
+        <app-odd [eventNumber]="event"></app-odd>
+      </ng-template>
+    </div>
+  </div>
+
+    <p [ngStyle]="{backgroundColor: ngstyleFlag %2 == 0 ? 'yellow' : 'transparent'}">NgStyle text</p>
+
+  <p appBasicHighlight>Style with basic directive</p>
+  <p appBetterHighlight>Style with better directive using renderer</p>
+  <p appCustomHighlight [defaultColor]="'yellow'" [highlightColor]="'cyan'">Style with custom directive</p>
+</div>
